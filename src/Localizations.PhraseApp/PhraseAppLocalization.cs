@@ -271,7 +271,7 @@ namespace Localizations.PhraseApp
 
                 foreach (PhraseAppLocaleModel locale in data)
                 {
-                    var sanitizedLocale = new SanitizedPhraseAppLocaleModel(locale.Id, new SanitizedLocaleName(locale.Name));
+                    var sanitizedLocale = new SanitizedPhraseAppLocaleModel(locale.Id, new SanitizedLocaleName(locale.Code));
                     cache.LocaleCache.AddOrUpdate(sanitizedLocale.Id, sanitizedLocale, (k, v) => sanitizedLocale);
                 }
 
