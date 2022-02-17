@@ -1,7 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <!--Nuget-->
@@ -10,7 +9,7 @@
     <Product>Localizations</Product>
     <Title>Localizations</Title>
     <Authors>Elders OSS</Authors>
-    <Copyright>Copyright © Elders OSS 2018</Copyright>
+    <Copyright>Copyright © Elders OSS 2018-2022</Copyright>
     <Description>Localization PhraseApp implementation for .NET applications</Description>
     <PackageTags>elders localization translation locale PhraseApp</PackageTags>
     <PackageLicenseUrl>https://github.com/Elders/Localizations/blob/master/LICENSE</PackageLicenseUrl>
@@ -25,9 +24,11 @@
   <ItemGroup>
     <PackageReference Include="Localizations" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
