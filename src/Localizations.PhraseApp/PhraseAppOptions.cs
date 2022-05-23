@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
-
-namespace Localizations.PhraseApp
+﻿namespace Localizations.PhraseApp
 {
     public class PhraseAppOptions
     {

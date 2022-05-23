@@ -14,33 +14,23 @@ namespace Localizations.PhraseApp
 {
     public class PhraseAppLocalization : ILocalization
     {
-        private readonly HttpClient client;
+        private static JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
 
-        private readonly JsonSerializerOptions jsonSerializerOptions;
+        private readonly HttpClient client;
 
         private readonly ILogger<PhraseAppLocalization> log;
         private readonly PhraseAppLocalizationCache cache;
         private string localesEtag;
 
-        PhraseAppOptions options;
+        private PhraseAppOptions options;
 
-        public PhraseAppLocalization(HttpClient client, IOptionsMonitor<PhraseAppOptions> optionsMonitor, ILogger<PhraseAppLocalization> log, PhraseAppLocalizationCache cache)
+        public PhraseAppLocalization(HttpClient client, IOptions<PhraseAppOptions> options, PhraseAppLocalizationCache cache, ILogger<PhraseAppLocalization> log)
         {
             this.client = client;
-            this.options = optionsMonitor.CurrentValue;
-            optionsMonitor.OnChange(Changed);
+            this.options = options.Value;
+            //optionsMonitor.OnChange(Changed); // No need to monitor changes, because it will memory leak. The instance is not singleton.
             this.log = log;
             this.cache = cache;
-            this.jsonSerializerOptions = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
-        }
-
-        private void Changed(PhraseAppOptions newOptions)
-        {
-            if (options != newOptions)
-            {
-                options = newOptions;
-                //optionsHasChanged = true;
-            }
         }
 
         /// <summary>
@@ -79,7 +69,7 @@ namespace Localizations.PhraseApp
 
             await CacheLocalesAndTranslationsAsync().ConfigureAwait(false);
 
-            if (cache.TranslationCachePerLocale.TryGetValue(sanitizedLocaleName, out ConcurrentDictionary<string, TranslationModel> translationsForLocale))
+            if (cache is not null && cache.TranslationCachePerLocale.TryGetValue(sanitizedLocaleName, out ConcurrentDictionary<string, TranslationModel> translationsForLocale))
                 return new List<SafeGet<TranslationModel>>(translationsForLocale.Values.Select(x => new SafeGet<TranslationModel>(x)));
 
             if (options.UseStrictLocale == false && sanitizedLocaleName.Value.Contains(SanitizedLocaleName.LocaleSeparator) == true)
