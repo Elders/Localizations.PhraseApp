@@ -1,3 +1,11 @@
+## [1.1.1-preview.2](https://github.com/Elders/Localizations.PhraseApp/compare/v1.1.1-preview.1...v1.1.1-preview.2) (2022-05-23)
+
+
+### Bug Fixes
+
+* Fixes memory leak related to IOptionsMonitor ([bfb3037](https://github.com/Elders/Localizations.PhraseApp/commit/bfb303781d007ff22db7b92834b0dd28267cc3b1))
+* Update to .NET 6 ([2294bc3](https://github.com/Elders/Localizations.PhraseApp/commit/2294bc35bb5dda4e09048d41d931042d2580f1e0))
+
 ## [1.1.1-preview.1](https://github.com/Elders/Localizations.PhraseApp/compare/v1.1.0...v1.1.1-preview.1) (2021-05-14)
 
 
