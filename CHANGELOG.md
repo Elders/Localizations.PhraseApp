@@ -1,3 +1,12 @@
+# [2.0.0](https://github.com/Elders/Localizations.PhraseApp/compare/v1.1.1...v2.0.0) (2022-09-15)
+
+
+### Bug Fixes
+
+* Fixes memory leak related to IOptionsMonitor ([2385a6a](https://github.com/Elders/Localizations.PhraseApp/commit/2385a6a4fa5aba65eb4d5cf6dc472f08b02fa87d))
+* Properly cache the locales using the code instead of name ([9d5cc8b](https://github.com/Elders/Localizations.PhraseApp/commit/9d5cc8b67ebf450e2a7ff129bd43442c3e0608ec))
+* update packages ([0602233](https://github.com/Elders/Localizations.PhraseApp/commit/060223327e2069841368ca6e669cbff6c6a71f3e))
+
 # [2.0.0-preview.1](https://github.com/Elders/Localizations.PhraseApp/compare/v1.1.1-preview.1...v2.0.0-preview.1) (2022-09-15)
 
 
