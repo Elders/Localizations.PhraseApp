@@ -16,7 +16,7 @@ namespace Localizations.PhraseApp
             services.AddSingleton<PhraseAppLocalizationCache>();// Hey-yo
 
             var options = new PhraseAppOptions();
-            configuration.GetSection(PhraseAppOptionsProvider.Section).Bind(options);
+            configuration.GetSection(PhraseAppOptionsProvider.SectionDefault).Bind(options);
             services.AddHttpClient<ILocalization, PhraseAppLocalization>(client =>
             {
                 client.BaseAddress = new Uri(options.Address);

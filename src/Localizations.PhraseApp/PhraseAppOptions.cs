@@ -1,7 +1,14 @@
-﻿namespace Localizations.PhraseApp
+﻿using System.Collections.Generic;
+
+namespace Localizations.PhraseApp
 {
     public class PhraseAppOptions
     {
+        public PhraseAppOptions()
+        {
+            TenantOptions = new List<PhraseAppOptions>();
+        }
+
         public string Address { get; set; }
 
         public string AccessToken { get; set; }
@@ -18,5 +25,7 @@
         public bool UseStrictLocale { get; set; }
 
         public int TtlInMinutes { get; set; }
+
+        public List<PhraseAppOptions> TenantOptions { get; set; }
     }
 }
