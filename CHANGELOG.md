@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/Elders/Localizations.PhraseApp/compare/v2.0.0...v2.1.0) (2022-11-11)
+
+
+### Features
+
+* Restructuring models and storing instances in the cache ([f3b21e5](https://github.com/Elders/Localizations.PhraseApp/commit/f3b21e59d77f5ee0b08bd319317a73c5de880f8e))
+
 # [2.0.0](https://github.com/Elders/Localizations.PhraseApp/compare/v1.1.1...v2.0.0) (2022-09-15)
 
 
