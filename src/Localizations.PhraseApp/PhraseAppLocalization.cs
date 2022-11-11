@@ -29,8 +29,8 @@ namespace Localizations.PhraseApp
             this.client = client;
             this.options = options.Value;
             //optionsMonitor.OnChange(Changed); // No need to monitor changes, because it will memory leak. The instance is not singleton.
-            this.log = log;
             this.cache = cache;
+            this.log = log;
         }
 
         /// <summary>
