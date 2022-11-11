@@ -5,6 +5,7 @@ namespace Localizations.PhraseApp.Internal
 {
     internal class PhraseAppOptionsProvider : OptionsProviderBase<PhraseAppOptions>
     {
+        internal const string NoTenant = "notenant";
         private const string DefaultAddress = "https://api.phraseapp.com/api/v2/";
         private const string DefaultLocale = "en";
         private const string DoNotUseStrictLocale = "false";
@@ -17,16 +18,13 @@ namespace Localizations.PhraseApp.Internal
 
         public override void Configure(PhraseAppOptions options)
         {
+            options.Tenant = configuration[$"{SectionDefault}:tenant"] ?? NoTenant;
             options.Address = configuration[$"{SectionDefault}:address"] ?? DefaultAddress;
             options.AccessToken = configuration[$"{SectionDefault}:accesstoken"];
             options.ProjectId = configuration[$"{SectionDefault}:projectid"];
             options.DefaultLocale = configuration[$"{SectionDefault}:defaultlocale"] ?? DefaultLocale;
             options.UseStrictLocale = bool.Parse(configuration[$"{SectionDefault}:usestrictlocale"] ?? DoNotUseStrictLocale);
             options.TtlInMinutes = int.Parse(configuration[$"{SectionDefault}:ttlinminutes"] ?? DefaultTtl);
-
-            // Loads the specific tenant configurations
-            var section = configuration.GetSection(SectionTenantConfig);
-            section.Bind(options.TenantOptions);
         }
     }
 }

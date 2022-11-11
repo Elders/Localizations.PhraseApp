@@ -18,13 +18,13 @@ namespace Localizations.PhraseApp
 
         private readonly HttpClient client;
 
-        private readonly ILogger<PhraseAppLocalization> log;
+        private readonly ILogger log;
         private readonly PhraseAppLocalizationCache cache;
         private string localesEtag;
 
         private PhraseAppOptions options;
 
-        public PhraseAppLocalization(HttpClient client, IOptions<PhraseAppOptions> options, PhraseAppLocalizationCache cache, ILogger<PhraseAppLocalization> log)
+        public PhraseAppLocalization(HttpClient client, IOptions<PhraseAppOptions> options, PhraseAppLocalizationCache cache, ILogger log)
         {
             this.client = client;
             this.options = options.Value;

@@ -18,16 +18,21 @@ namespace Localizations.Playground
             services.AddLogging();
             services.AddPhraseApp(cfg);
             services.AddSingleton<IConfiguration>(cfg);
+
+            services.AddTransient<PhraseAppLocalizationFactory>();
+
             var serviceProvider = services.BuildServiceProvider();
 
             var opts = serviceProvider.GetRequiredService<IOptions<PhraseAppOptions>>();
+            string testKey = "1vipcustomer";
 
-            PhraseAppLocalization localization = serviceProvider.GetRequiredService<PhraseAppLocalization>();
-            await localization.CacheLocalesAndTranslationsAsync();
-            var byKey = await localization.GetAsync("1vipcustomer", "En");
-            var byKeyWithHeader = await localization.GetAsync("1vipcustomer", new AcceptLanguageHeader("zh-Hant"));
-            var getAll = await localization.GetAllAsync("eN");
-            var getAllWithHeader = await localization.GetAllAsync(new AcceptLanguageHeader("EN"));
+            // multi-tenancy
+            var fact = serviceProvider.GetRequiredService<PhraseAppLocalizationFactory>();
+            var noTenantLocatlization = await fact.GetLocalizationAsync("notenant");
+            var test1 = await noTenantLocatlization.GetAsync("branch", "en");
+
+            var pruvitTenantLocatlization = await fact.GetLocalizationAsync("tenant2");
+            var test2 = await pruvitTenantLocatlization.GetAsync(testKey, "bg");
         }
     }
 }

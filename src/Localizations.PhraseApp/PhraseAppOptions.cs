@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Localizations.PhraseApp
 {
     public class PhraseAppOptions
     {
-        public PhraseAppOptions()
-        {
-            TenantOptions = new List<PhraseAppOptions>();
-        }
+        [Required]
+        public string Tenant { get; set; }
 
         public string Address { get; set; }
 
+        [Required]
         public string AccessToken { get; set; }
 
+        [Required]
         public string ProjectId { get; set; }
         /// <summary>
         /// Specifies default fall back locale
@@ -25,7 +25,5 @@ namespace Localizations.PhraseApp
         public bool UseStrictLocale { get; set; }
 
         public int TtlInMinutes { get; set; }
-
-        public List<PhraseAppOptions> TenantOptions { get; set; }
     }
 }
