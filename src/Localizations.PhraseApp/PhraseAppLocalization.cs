@@ -158,7 +158,6 @@ namespace Localizations.PhraseApp
             return string.IsNullOrEmpty(options.DefaultLocale) == false && options.DefaultLocale.Equals(currentLocale, StringComparison.OrdinalIgnoreCase) == false;
         }
 
-
         async Task CacheTranslationsAsync()
         {
             foreach (var sanitizedLocale in cache.LocaleCache.Values)
