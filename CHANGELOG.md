@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.0...v2.1.1) (2022-11-15)
+
+
+### Bug Fixes
+
+* trigger pipeline ([9a33e94](https://github.com/Elders/Localizations.PhraseApp/commit/9a33e94cf53957d0354d8244da48ceb25d823fab))
+
 # [2.1.0](https://github.com/Elders/Localizations.PhraseApp/compare/v2.0.0...v2.1.0) (2022-11-11)
 
 
