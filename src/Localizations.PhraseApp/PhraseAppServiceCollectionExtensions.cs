@@ -13,8 +13,8 @@ namespace Localizations.PhraseApp
         {
             services.AddOptions();
             services.AddOption<PhraseAppOptions, PhraseAppOptionsProvider>();
-            services.AddSingleton<PhraseAppLocalizationCacheFactory>();// Hey-yo
-            services.AddSingleton<PhraseAppLocalizationFactory>();// Hey-yo
+            services.AddSingleton<PhraseAppLocalizationCacheFactory>();
+            services.AddSingleton<PhraseAppLocalizationFactory>();
             services.AddSingleton<PhraseAppLocalizationCache>();// Hey-yo
             services.AddPhraseAppDefault(configuration);
             services.AddPhraseAppTenants(configuration);
