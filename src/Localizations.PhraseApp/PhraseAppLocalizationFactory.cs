@@ -65,6 +65,7 @@ namespace Localizations.PhraseApp
             {
                 foundOptions = new PhraseAppOptions();
                 configuration.GetSection(PhraseAppOptionsProvider.SectionDefault).Bind(foundOptions);
+                foundOptions.Tenant ??= PhraseAppOptionsProvider.NoTenant;
             }
 
             return foundOptions;

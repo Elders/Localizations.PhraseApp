@@ -17,7 +17,35 @@ namespace Localizations.PhraseApp
             services.AddSingleton<PhraseAppLocalizationFactory>();
             services.AddSingleton<PhraseAppLocalizationCache>();// Hey-yo
             services.AddPhraseAppDefault(configuration);
+            services.AddTransient<ILocalization>(provider =>
+            {
+                var factory = provider.GetRequiredService<PhraseAppLocalizationFactory>();
+
+                return factory.GetLocalizationAsync(PhraseAppOptionsProvider.NoTenant).GetAwaiter().GetResult();
+            });
+
+            return services;
+        }
+
+        public static IServiceCollection AddPhraseAppWithMultitenancy(this IServiceCollection services, IConfiguration configuration, Func<IServiceProvider, string> tenantProvider)
+        {
+            services.AddOptions();
+            services.AddOption<PhraseAppOptions, PhraseAppOptionsProvider>();
+            services.AddSingleton<PhraseAppLocalizationCacheFactory>();
+            services.AddSingleton<PhraseAppLocalizationFactory>();
+            services.AddSingleton<PhraseAppLocalizationCache>();// Hey-yo
             services.AddPhraseAppTenants(configuration);
+
+            services.AddTransient<ILocalization>(provider =>
+            {
+
+                var factory = provider.GetRequiredService<PhraseAppLocalizationFactory>();
+                string tenant = tenantProvider(provider);
+                if (string.IsNullOrEmpty(tenant))
+                    throw new ArgumentNullException(nameof(tenantProvider), "Unable to determine tenant for phraseApp localization.");
+
+                return factory.GetLocalizationAsync(tenant).GetAwaiter().GetResult();
+            });
 
             return services;
         }
@@ -26,8 +54,9 @@ namespace Localizations.PhraseApp
         {
             var options = new PhraseAppOptions();
             configuration.GetSection(PhraseAppOptionsProvider.SectionDefault).Bind(options);
+            string tenant = options.Tenant ?? PhraseAppOptionsProvider.NoTenant;
 
-            services.AddHttpClient<PhraseAppLocalization, PhraseAppLocalization>($"{PhraseAppLocalizationFactory.HttpClientPrefix}_{PhraseAppOptionsProvider.NoTenant}", client =>
+            services.AddHttpClient<PhraseAppLocalization, PhraseAppLocalization>($"{PhraseAppLocalizationFactory.HttpClientPrefix}_{tenant}", client =>
             {
                 client.BaseAddress = new Uri(options.Address);
                 client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"token {options.AccessToken}");
