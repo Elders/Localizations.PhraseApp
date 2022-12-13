@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.1...v2.1.2) (2022-12-13)
+
+
+### Bug Fixes
+
+* Fixes phrase app without tenants ([9d8f07d](https://github.com/Elders/Localizations.PhraseApp/commit/9d8f07d7c9840278d749e5f5bf89a3759403c436))
+
 ## [2.1.1](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.0...v2.1.1) (2022-11-15)
 
 
