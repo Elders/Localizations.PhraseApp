@@ -1,8 +1,8 @@
-﻿using Localizations.PhraseApp;
+﻿using System.Threading.Tasks;
+using Localizations.PhraseApp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using System.Threading.Tasks;
 
 namespace Localizations.Playground
 {
@@ -31,8 +31,8 @@ namespace Localizations.Playground
             var noTenantLocatlization = await fact.GetLocalizationAsync("notenant");
             var test1 = await noTenantLocatlization.GetAsync("branch", "en");
 
-            var pruvitTenantLocatlization = await fact.GetLocalizationAsync("tenant2");
-            var test2 = await pruvitTenantLocatlization.GetAsync(testKey, "bg");
+            var tenantLocatlization = await fact.GetLocalizationAsync("tenant2");
+            var test2 = await tenantLocatlization.GetAsync(testKey, "bg");
         }
     }
 }
