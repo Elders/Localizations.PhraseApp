@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.2...v2.1.3) (2022-12-15)
+
+
+### Bug Fixes
+
+* Updates packages of the dependencies ([c54cf53](https://github.com/Elders/Localizations.PhraseApp/commit/c54cf5375ca90ebbb9477e6c649fc2435006bbed))
+
 ## [2.1.2](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.1...v2.1.2) (2022-12-13)
 
 
