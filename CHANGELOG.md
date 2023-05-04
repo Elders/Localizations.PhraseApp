@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.3...v2.1.4) (2023-05-04)
+
+
+### Bug Fixes
+
+* do not log warning messages if the response from phraseapp indicates success ([bbbe78b](https://github.com/Elders/Localizations.PhraseApp/commit/bbbe78b75c95848780da1fe73bb470a827554786))
+
 ## [2.1.3](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.2...v2.1.3) (2022-12-15)
 
 
