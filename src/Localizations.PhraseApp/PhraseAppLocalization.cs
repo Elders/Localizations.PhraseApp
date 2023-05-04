@@ -175,19 +175,19 @@ namespace Localizations.PhraseApp
 
                 if (response is null)
                 {
-                    log.LogWarning($"Initialization for locale {sanitizedLocale.Name} with id {sanitizedLocale.Id} failed. Response was null");
+                    log.LogWarning("Initialization for locale {locale} with id {id} failed. Response was null.", sanitizedLocale.Name, sanitizedLocale.Id);
                     continue;
                 }
 
                 if (response.IsSuccessStatusCode == false)
                 {
-                    log.LogWarning($"Initialization for locale {sanitizedLocale.Name} with id {sanitizedLocale.Id} failed. Response status was {response.StatusCode}");
+                    log.LogWarning("Initialization for locale {locale} with id {id} failed. Response status was {statusCode}.", sanitizedLocale.Name, sanitizedLocale.Id, response.StatusCode);
                     continue;
                 }
 
                 if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                 {
-                    log.LogError($"Initialization for locale {sanitizedLocale.Name} with id {sanitizedLocale.Id} failed. Response status code is Unauthorized");
+                    log.LogError("Initialization for locale {locale} with id {id} failed. Response status code is Unauthorized.", sanitizedLocale.Name, sanitizedLocale.Id);
                     break;
                 }
 
@@ -211,9 +211,11 @@ namespace Localizations.PhraseApp
                         cache.EtagPerLocaleCache.AddOrUpdate(sanitizedLocale.Name, currentLocaleEtag, (k, v) => localeEtagFromHeader);
 
                     cache.TranslationCachePerLocale.AddOrUpdate(sanitizedLocale.Name, cacheForSpecificLocale, (k, v) => cacheForSpecificLocale);
+
+                    continue;
                 }
 
-                log.LogWarning($"Initialization for locale {sanitizedLocale.Name} with id {sanitizedLocale.Id} failed.");
+                log.LogWarning("Initialization for locale {locale} with id {id} failed. Response status was {statusCode}.", sanitizedLocale.Name, sanitizedLocale.Id, response.StatusCode);
             }
 
             cache.NextCheckForChanges = DateTime.UtcNow.AddMinutes(options.TtlInMinutes);
