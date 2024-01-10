@@ -286,7 +286,7 @@ namespace Localizations.PhraseApp
 
         bool ShouldCheckForChanges()
         {
-            if (cache.NextCheckForChanges < DateTime.UtcNow)
+            if (cache.NextCheckForChanges < DateTimeOffset.UtcNow)
                 return true;
 
             return false;
@@ -326,9 +326,9 @@ namespace Localizations.PhraseApp
             return default(T);
         }
 
-        static DateTime ConvertTimestampFromParameterToDateTime(long epoch)
+        static DateTimeOffset ConvertTimestampFromParameterToDateTime(long epoch)
         {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(epoch);
+            return new DateTimeOffset(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero).AddSeconds(epoch);
         }
 
         bool TryGetEtagValueFromHeaders(HttpResponseMessage response, out string etag)

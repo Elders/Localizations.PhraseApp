@@ -4,7 +4,7 @@ using Localizations.PhraseApp.Internal;
 
 namespace Localizations.PhraseApp
 {
-    public class PhraseAppLocalizationCache
+    public sealed class PhraseAppLocalizationCache
     {
         public PhraseAppLocalizationCache()
         {
@@ -17,29 +17,6 @@ namespace Localizations.PhraseApp
         internal ConcurrentDictionary<string, ConcurrentDictionary<string, TranslationModel>> TranslationCachePerLocale { get; private set; }
         internal ConcurrentDictionary<string, string> EtagPerLocaleCache { get; private set; }
 
-        internal DateTime NextCheckForChanges { get; set; }
-    }
-
-    public class PhraseAppLocalizationCacheFactory
-    {
-        private ConcurrentDictionary<string, PhraseAppLocalizationCache> tenantCaches;
-
-        public PhraseAppLocalizationCacheFactory()
-        {
-            tenantCaches = new ConcurrentDictionary<string, PhraseAppLocalizationCache>();
-        }
-
-        public PhraseAppLocalizationCache GetCache(string tenant)
-        {
-            PhraseAppLocalizationCache cache;
-
-            if (tenantCaches.TryGetValue(tenant, out cache) == false)
-            {
-                cache = new PhraseAppLocalizationCache();
-                tenantCaches.TryAdd(tenant, cache);
-            }
-
-            return cache;
-        }
+        internal DateTimeOffset NextCheckForChanges { get; set; }
     }
 }
