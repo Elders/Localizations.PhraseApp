@@ -26,6 +26,9 @@ namespace Localizations.PhraseApp
 
         public PhraseAppLocalization(HttpClient client, IOptions<PhraseAppOptions> options, PhraseAppLocalizationCache cache, ILogger log)
         {
+            if (client.BaseAddress is null)
+                throw new InvalidOperationException($"HttpClient.BaseAddress is null. Tenant {options.Value.Tenant}.");
+
             this.client = client;
             this.options = options.Value;
             //optionsMonitor.OnChange(Changed); // No need to monitor changes, because it will memory leak. The instance is not singleton.
