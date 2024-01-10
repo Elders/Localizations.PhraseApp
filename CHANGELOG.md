@@ -1,3 +1,11 @@
+## [2.1.6](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.5...v2.1.6) (2024-01-10)
+
+
+### Bug Fixes
+
+* check if the options are not null ([9cb2533](https://github.com/Elders/Localizations.PhraseApp/commit/9cb2533ce908810cfa8c62844234889752c0b5f1))
+* do not log a warning if the response code is NotModified ([8af8516](https://github.com/Elders/Localizations.PhraseApp/commit/8af85164ff6d74b0cb5cc4bb9562ae72f36616be))
+
 ## [2.1.5](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.4...v2.1.5) (2024-01-10)
 
 
