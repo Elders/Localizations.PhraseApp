@@ -27,7 +27,7 @@ namespace Localizations.PhraseApp
         public PhraseAppLocalization(HttpClient client, IOptions<PhraseAppOptions> options, PhraseAppLocalizationCache cache, ILogger log)
         {
             if (client.BaseAddress is null)
-                throw new InvalidOperationException($"HttpClient.BaseAddress is null. Tenant {options.Value.Tenant}.");
+                throw new InvalidOperationException($"HttpClient.BaseAddress is null. Tenant {options.Value?.Tenant ?? "N/A"}.");
 
             this.client = client;
             this.options = options.Value;
