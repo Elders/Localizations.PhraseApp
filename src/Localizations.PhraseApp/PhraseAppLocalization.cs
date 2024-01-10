@@ -182,6 +182,9 @@ namespace Localizations.PhraseApp
                     continue;
                 }
 
+                if (response.StatusCode == System.Net.HttpStatusCode.NotModified)
+                    continue;
+
                 if (response.IsSuccessStatusCode == false)
                 {
                     log.LogWarning("Initialization for locale {locale} with id {id} failed. Response status was {statusCode}.", sanitizedLocale.Name, sanitizedLocale.Id, response.StatusCode);
@@ -193,9 +196,6 @@ namespace Localizations.PhraseApp
                     log.LogError("Initialization for locale {locale} with id {id} failed. Response status code is Unauthorized.", sanitizedLocale.Name, sanitizedLocale.Id);
                     break;
                 }
-
-                if (response.StatusCode == System.Net.HttpStatusCode.NotModified)
-                    continue;
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
