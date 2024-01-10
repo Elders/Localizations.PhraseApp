@@ -1,3 +1,10 @@
+## [2.1.5](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.4...v2.1.5) (2024-01-10)
+
+
+### Bug Fixes
+
+* throw is the base address is not set to the HttpClient when instantiating PhraseAppLocalization ([4c18d20](https://github.com/Elders/Localizations.PhraseApp/commit/4c18d202e5d119bfdd297734e828630905dcdec7))
+
 ## [2.1.4](https://github.com/Elders/Localizations.PhraseApp/compare/v2.1.3...v2.1.4) (2023-05-04)
 
 
