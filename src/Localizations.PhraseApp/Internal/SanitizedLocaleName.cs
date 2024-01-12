@@ -4,7 +4,7 @@ namespace Localizations.PhraseApp.Internal
 {
     internal class SanitizedLocaleName
     {
-        public static char LocaleSeparator = '-';
+        public const char LocaleSeparator = '-';
 
         public SanitizedLocaleName(string name)
         {
