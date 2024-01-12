@@ -14,16 +14,20 @@ namespace Localizations.PhraseApp
 
         [Required]
         public string ProjectId { get; set; }
+
         /// <summary>
-        /// Specifies default fall back locale
+        /// Specifies default fall back locale. Default is en.
         /// </summary>
         public string DefaultLocale { get; set; }
 
         /// <summary>
-        /// Specifies if fall back to two letter part of locale is allowed e.g en-GB would fall back to en
+        /// Specifies if fall back to two letter part of locale is allowed e.g en-GB would fall back to en. Default is false.
         /// </summary>
         public bool UseStrictLocale { get; set; }
 
+        /// <summary>
+        /// Default is 5 min.
+        /// </summary>
         public int TtlInMinutes { get; set; }
     }
 }

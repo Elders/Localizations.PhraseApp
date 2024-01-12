@@ -14,15 +14,10 @@ namespace Localizations.PhraseApp
             services.AddOptions();
             services.AddOption<PhraseAppOptions, PhraseAppOptionsProvider>();
             services.AddSingleton<PhraseAppLocalizationCacheFactory>();
+            services.AddSingleton<ILocalizationFactory, PhraseAppLocalizationFactory>();
             services.AddSingleton<PhraseAppLocalizationFactory>();
             services.AddSingleton<PhraseAppLocalizationCache>();// Hey-yo
             services.AddPhraseAppDefault(configuration);
-            services.AddTransient<ILocalization>(provider =>
-            {
-                var factory = provider.GetRequiredService<PhraseAppLocalizationFactory>();
-
-                return factory.GetLocalizationAsync(PhraseAppOptionsProvider.NoTenant).GetAwaiter().GetResult();
-            });
 
             return services;
         }
@@ -32,20 +27,10 @@ namespace Localizations.PhraseApp
             services.AddOptions();
             services.AddOption<PhraseAppOptions, PhraseAppOptionsProvider>();
             services.AddSingleton<PhraseAppLocalizationCacheFactory>();
+            services.AddSingleton<ILocalizationFactory, PhraseAppLocalizationFactory>();
             services.AddSingleton<PhraseAppLocalizationFactory>();
             services.AddSingleton<PhraseAppLocalizationCache>();// Hey-yo
             services.AddPhraseAppTenants(configuration);
-
-            services.AddTransient<ILocalization>(provider =>
-            {
-
-                var factory = provider.GetRequiredService<PhraseAppLocalizationFactory>();
-                string tenant = tenantProvider(provider);
-                if (string.IsNullOrEmpty(tenant))
-                    throw new ArgumentNullException(nameof(tenantProvider), "Unable to determine tenant for phraseApp localization.");
-
-                return factory.GetLocalizationAsync(tenant).GetAwaiter().GetResult();
-            });
 
             return services;
         }
