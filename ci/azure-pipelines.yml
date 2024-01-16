@@ -20,10 +20,10 @@ jobs:
     persistCredentials: true
 
   - task: UseDotNet@2
-    displayName: 'Use .NET 6 Core sdk'
+    displayName: 'Use .NET 8 Core sdk'
     inputs:
       packageType: sdk
-      version: 6.0.x
+      version: 8.0.x
       installationPath: $(Agent.ToolsDirectory)/dotnet
       
   - task: DotNetCoreCLI@2
@@ -32,13 +32,6 @@ jobs:
       command: test
       projects: '**/*Tests.csproj'
 
-
-  - task: UseDotNet@2
-    displayName: 'Use .NET 6 Core sdk'
-    inputs:
-      packageType: sdk
-      version: 6.0.x
-      installationPath: $(Agent.ToolsDirectory)/dotnet
   - task: DotNetCoreCLI@2
     name: build
     inputs:
@@ -53,7 +46,7 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        time curl -L https://github.com/Elders/blob/releases/download/SemRel-01/node_modules.tar.gz | tar mx -I pigz
+        time curl -L https://github.com/Elders/blob/releases/download/SemRel-01/node_modules.tar.gz | tar -xzv
         time npx semantic-release --no-ci
         # few commands for debugging purposes
         ls -l $STAGING_PATH/*.nupkg
