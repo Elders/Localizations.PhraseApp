@@ -19,10 +19,11 @@
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AssemblyName>Localizations.PhraseApp</AssemblyName>
     <NeutralLanguage>en-US</NeutralLanguage>
+    <AssemblyVersion>3.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Localizations" Version="3.0.0" />
+    <PackageReference Include="Localizations" Version="3.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
